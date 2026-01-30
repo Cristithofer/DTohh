@@ -40,8 +40,8 @@
     <div class="container-fluid"> 
 
       <!-- Logo a la izquierda -->
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/logo1.png" alt="Logo de la empresa">
+      <a class="navbar-brand" href="/index.html">
+        <img src="assets/logo1.png" alt="Logo de la empresa" href="/">
       </a>
 
       <!-- hamburguesa -->
@@ -55,7 +55,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages\servicios.html">Servicios</a>
@@ -73,7 +73,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">
               <i class="bi bi-cart-fill fs-4"></i> 
-              <span class="badge bg-danger rounded-pill">3</span> 
+              <span class="badge bg-danger rounded-pill">0</span> 
             </a>
           </li>
         </ul>
@@ -86,69 +86,83 @@
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasCartLabel">Mis Servicios Seleccionados</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <!-- Aquí irá el contenido dinámico con JavaScript más adelante -->
-      <p class="text-muted text-center my-5">Aún no has seleccionado servicios</p>
-
-      <!-- Ej estatico-->
-
-      <div class="list-group">
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-          Reparación de gasfitería
-          <span class="badge bg-primary rounded-pill">$45.000</span>
-        </div>
       </div>
-      <hr>
-      <div class="d-flex justify-content-between mb-3">
+      <div class="offcanvas-body">
+      <p class="text-muted text-center my-5" id="mensaje-vacio">Aún no has seleccionado servicios</p>
+
+      <div class="list-group" id="lista-carrito"></div>
+
+      <hr id="hr-total" style="display:none;">
+
+      <div class="d-flex justify-content-between mb-3" id="contenedor-total" style="display:none;">
         <strong>Total estimado:</strong>
-        <strong>$45.000</strong>
+        <strong id="total-precio">$0</strong>
       </div>
-      <a href="contacto.html" class="btn btn-primary w-100">Solicitar Cotización</a>
-    
+
+      <a href="pages/contacto.html" class="btn btn-primary w-100" id="btn-cotizar">Solicitar Cotización</a>
+
+      <button class="btn btn-outline-secondary w-100 mt-2" id="btn-vaciar">Vaciar carrito</button>
     </div>
   </div>
 
   <!-- Contenido principal –  CAMBIA en página -->
   <main class="container my-5">
-    
-    <h1 class="mb-4">Bienvenido a Reparaciones e Instalaciones M</h1>
-    <p class="lead">TODOS LOS SERVICIOS QUE PUEDA REQUERIR.</p>
+  <h1 class="mb-4 text-center">Bienvenido a Reparaciones e Instalaciones</h1>
+  <p class="lead text-center mb-5">Elige los servicios que necesitas</p>
 
-    <!-- Eje placeholder -->
-    <div class="row mt-5">
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
-            <i class="bi bi-people fs-1 text-primary"></i>
-            <h5 class="card-title mt-3">nuestros servicios</h5>
-          </div>
+  <div class="row g-4">
+    <!-- Servicio 1 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <i class="bi bi-wrench-adjustable fs-1 text-primary mb-3"></i>
+          <h5 class="card-title">Reparación de Gasfitería</h5>
+          <p class="card-text">Arreglo de fugas, destapes, cambio de grifería, etc.</p>
+          <p class="fw-bold text-success">$65.000</p>
+          <button class="btn btn-primary w-100 btn-agregar"
+                  data-nombre="Reparación de gasfitería"
+                  data-precio="$45.000">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-md-8">
-        <div class="card mb-8">
-          <div class="card-body text-center">
-            <i class="bi bi-phone fs-1 text-primary"></i>
-            <h5 class="card-title mt-3">cotizacion</h5>
-          </div>
+    <!-- Servicio 2 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <i class="bi bi-hammer fs-1 text-primary mb-3"></i>
+          <h5 class="card-title">Instalación de Muebles Empotrados</h5>
+          <p class="card-text">Cocinas, closets, bibliotecas a medida.</p>
+          <p class="fw-bold text-success">$80.000</p>
+          <button class="btn btn-primary w-100 btn-agregar"
+                  data-nombre="Instalación de mueble empotrado"
+                  data-precio="$80.000">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-md-8">
-        <div class="card mb-8">
-          <div class="card-body text-center">
-            <i class="bi bi-exclamation-triangle fs-1 text-primary"></i>
-            <h5 class="card-title mt-6">urgencias</h5>
-          </div>
+    <!-- Servicio 3 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <i class="bi bi-brush fs-1 text-primary mb-3"></i>
+          <h5 class="card-title">Pintura Interior (2 habitaciones)</h5>
+          <p class="card-text">Preparación, pintura y retoques.</p>
+          <p class="fw-bold text-success">$120.000</p>
+          <button class="btn btn-primary w-100 btn-agregar"
+                  data-nombre="Pintura interior (2 habitaciones)"
+                  data-precio="$120.000">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
   
 
   <footer class="text-center">
@@ -179,8 +193,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- scripts -->
-  <script src="ASSETS/JS/list-interactiva.js"></script>
-  <script src="ASSETS/JS/Interactive.js"></script>
-
+  <script src="pages\js\carrito.js"></script>
 </body>
 </html>

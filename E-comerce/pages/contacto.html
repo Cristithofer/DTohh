@@ -59,8 +59,8 @@
     <div class="container-fluid">
 
       <!-- Logo -->
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/logo1.png" alt="Logo de la empresa">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/logo1.png" alt="Logo de la empresa" href="/index.html">
       </a>
 
       <!-- Botón hamburguesa -->
@@ -74,7 +74,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="servicios.html">Servicios</a>
@@ -83,7 +83,7 @@
             <a class="nav-link" href="contacto.html">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="nosotros.html">Nosotros</a>
+            <a class="nav-link" href="/pages/contacto.html">Nosotros</a>
           </li>
         </ul>
 
@@ -107,24 +107,20 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <!-- Aquí irá el contenido dinámico con JavaScript más adelante -->
-      <p class="text-muted text-center my-5">Aún no has seleccionado servicios</p>
+      <p class="text-muted text-center my-5" id="mensaje-vacio">Aún no has seleccionado servicios</p>
 
-      <!-- Eje estatico -->
+      <div class="list-group" id="lista-carrito"></div>
 
-      <div class="list-group">
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-          Reparación de gasfitería
-          <span class="badge bg-primary rounded-pill">$45.000</span>
-        </div>
-      </div>
-      <hr>
-      <div class="d-flex justify-content-between mb-3">
+      <hr id="hr-total" style="display:none;">
+
+      <div class="d-flex justify-content-between mb-3" id="contenedor-total" style="display:none;">
         <strong>Total estimado:</strong>
-        <strong>$45.000</strong>
+        <strong id="total-precio">$0</strong>
       </div>
-      <a href="contacto.html" class="btn btn-primary w-100">Solicitar Cotización</a>
-    
+
+      <a href="pages/contacto.html" class="btn btn-primary w-100" id="btn-cotizar">Solicitar Cotización</a>
+
+      <button class="btn btn-outline-secondary w-100 mt-2" id="btn-vaciar">Vaciar carrito</button>
     </div>
   </div>
 
